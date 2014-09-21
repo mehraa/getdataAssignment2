@@ -20,7 +20,7 @@ Filtering Mean and Std values
 =============================
 grepl function is used on the V3 column of features.txt to check for all the feature names containing Mean or Std in their names. 
 
-Using the boolean vectors from the above step, a vector called required.features is created with only those features that have ???Mean??? or Std in their name. 
+Using the boolean vectors from the above step, a vector called required.features is created with only those features that have Mean or Std in their name. 
 
 The complete.data is subsetted to include only those features that are listed in required.features. This becomes the final.complete.data dataset.
 
