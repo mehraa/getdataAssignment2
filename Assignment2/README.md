@@ -1,15 +1,3 @@
-==================================================================
-Human Activity Recognition Using Smartphones Dataset
-Version 1.0
-==================================================================
-Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto.
-Smartlab - Non Linear Complex Systems Laboratory
-DITEN - Universit??? degli Studi di Genova.
-Via Opera Pia 11A, I-16145, Genoa, Italy.
-activityrecognition@smartlab.ws
-www.smartlab.ws
-==================================================================
-  
 About the Script
 ================
 The R-script has been written under the assumption that all the necessary cdv files are available in the Working Directory set in the beginning of the code. Required files include - 
@@ -24,12 +12,12 @@ The R-script has been written under the assumption that all the necessary cdv fi
 
 
 Merging Data
-????????????????????????????????????
+=============
 After reading the required files into R, the script first merges all the data into one dataset called ???complete.data???. This is done by using separately using cbind on the X_test, y_test & subject_test, and the X_train, y_train & subject_train files. Thereafter the train and test data is combined into the complete.data dataset using rbind. 
 
 
 Filtering Mean and Std values
-???????????????????????????????????????????????????????????????????????????????????????
+=============================
 grepl function is used on the V3 column of features.txt to check for all the feature names containing ???Mean??? or ???Std??? in their names. 
 
 Using the boolean vectors from the above step, a vector called ???required.features??? is created with only those features that have ???Mean??? or ???Std??? in their name. 
@@ -38,17 +26,17 @@ The complete.data is subsetted to include only those features that are listed in
 
 
 Activity Names
-??????????????????????????????????????????
+==============
 A combination of the ???for??? and ???if??? function is used to replace the numbers 1-6 in the Activity_Labels column of complete.data with the corresponding descriptive activity label from the activity_label.txt file. 
 
 
 Variable Names
-??????????????????????????????????????????
+==============
 ???colnames??? function is used to define the column names for the complete.data dataset. Column name 1 is Subject; column names 2-87 are the features selected in ???required.features???; column 88 is the Activity_Label. 
 
 
 Tidy Data
-???????????????????????????
+=========
 A 30x86 matrix is created to calculate the mean of each feature for each Subject. The ???tapply??? function loops over columns 2-87 in the final.complete.data to calculate the mean according to different levels of the Subject. This is referred to as the ???avg.by.sub??? dataset.
 
 Similarly a 6x86 matrix is created to calculate the mean for each feature by Activity. The ???tapply??? function loops over columns 2-87 in the final.complete.data to calculate the mean according to different levels of the Activity_Labels. This is referred to as the ???avg.by.act??? dataset.
@@ -60,6 +48,18 @@ The tidy.data is an rbind of the avg. by.sub and avg. by.act datasets.
 ====================  
 Original README text
 ====================
+
+==================================================================
+Human Activity Recognition Using Smartphones Dataset
+Version 1.0
+==================================================================
+Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto.
+Smartlab - Non Linear Complex Systems Laboratory
+DITEN - Universit??? degli Studi di Genova.
+Via Opera Pia 11A, I-16145, Genoa, Italy.
+activityrecognition@smartlab.ws
+www.smartlab.ws
+==================================================================
   
 The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
 
